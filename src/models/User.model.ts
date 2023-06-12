@@ -6,4 +6,5 @@ export default yup.object().shape({
                 .required('You must specify a username'),
     password: yup.string()
                  .required('You must specify a password'),
+    secret: yup.string()
 })

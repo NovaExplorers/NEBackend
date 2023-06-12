@@ -24,10 +24,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const yup = __importStar(require("yup"));
+var DeviceType;
+(function (DeviceType) {
+    DeviceType[DeviceType["CLIENT"] = 1] = "CLIENT";
+    DeviceType[DeviceType["IOT"] = 2] = "IOT";
+})(DeviceType || (DeviceType = {}));
 exports.default = yup.object().shape({
-    _id: yup.string(),
-    username: yup.string()
-        .required('You must specify a username'),
-    password: yup.string()
-        .required('You must specify a password'),
+    type: yup.mixed().required(),
+    name: yup.string().max(32).defined(),
+    id: yup.string().required(),
+    secret: yup.string().required()
 });

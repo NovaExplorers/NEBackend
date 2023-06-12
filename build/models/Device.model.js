@@ -25,9 +25,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const yup = __importStar(require("yup"));
 exports.default = yup.object().shape({
-    _id: yup.string(),
-    username: yup.string()
-        .required('You must specify a username'),
-    password: yup.string()
-        .required('You must specify a password'),
+    _id: yup.string().required(),
+    secret: yup.string().required(),
+    name: yup.string().required(),
+    userAccess: yup.array().required(),
 });

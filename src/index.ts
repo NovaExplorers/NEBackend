@@ -8,6 +8,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import expressSession from 'express-session';
 import { deviceRouter } from "@routes/Device.routes";
+import { initServer } from "socket/socketServer";
 
 const MongoDBStore = require('connect-mongodb-session')(expressSession);
 
@@ -42,6 +43,8 @@ app.use(
 );
 
 initDb();
+
+initServer()
 
 app.use(authRouter);
 app.use(deviceRouter);

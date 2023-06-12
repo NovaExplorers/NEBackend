@@ -19,7 +19,11 @@ deviceRouter.post('/api/v1/getDevices', async (req, res)=>{
 
     const user = UserModel.cast(req.user);
 
-    const userDevices = await devices.find({ userAccess: user._id });
+    let userDevices = await devices.find({ userAccess: user._id });
+
+    userDevices.map(dev => {
+      return { name: dev.name, _id: dev._id }
+    });
 
     res.send({
         success: true,
